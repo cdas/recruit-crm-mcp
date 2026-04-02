@@ -1,0 +1,38 @@
+[project]
+name = "recruit-crm-mcp"
+version = "0.1.0"
+description = "MCP server for Recruit CRM integration with Claude Desktop"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "cdas"}]
+dependencies = [
+    "mcp>=1.0.0",
+    "httpx>=0.27.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "pytest-httpx>=0.30",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[project.urls]
+Homepage = "https://github.com/cdas/recruit-crm-mcp"
+"Bug Tracker" = "https://github.com/cdas/recruit-crm-mcp/issues"
+
+[project.scripts]
+recruit-crm-mcp = "recruit_crm_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/recruit_crm_mcp"]
